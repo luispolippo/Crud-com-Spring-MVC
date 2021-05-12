@@ -9,29 +9,34 @@ import org.springframework.web.servlet.ModelAndView;
 import curso.springboot.model.Pessoa;
 import curso.springboot.repository.PessoaRepository;
 
+
+
 @Controller
 public class PessoaController {
+	
+	private static final String PAGINACADASTRO = "cadastro/cadastropessoa";
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
 
 	@GetMapping(value = "/cadastropessoa")
 	public String inicio() {
-		return "cadastro/cadastropessoa";
+		return PAGINACADASTRO;
 	}
 
 	@PostMapping(value = "/salvarpessoa")
-	public String salvar(Pessoa pessoa) {
+	public ModelAndView salvar(Pessoa pessoa) {
 
 		pessoaRepository.save(pessoa);
-		return "cadastro/cadastropessoa";
+		
+		return listapessoas();
 
 	}
 
 	@GetMapping(value = "/listapessoas")
-	public ModelAndView pessoas() {
+	public ModelAndView listapessoas() {
 		
-		ModelAndView andView = new ModelAndView("cadastro/cadastropessoa");
+		ModelAndView andView = new ModelAndView(PAGINACADASTRO);
 		Iterable<Pessoa> pessoasIt = pessoaRepository.findAll();
 		andView.addObject("pessoas", pessoasIt);
 
