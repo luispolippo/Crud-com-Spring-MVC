@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import curso.springboot.model.Pessoa;
@@ -24,9 +25,7 @@ public class PessoaController {
 
 	@GetMapping(value = "/cadastropessoa")
 	public ModelAndView inicio() {
-		ModelAndView andView = new ModelAndView(PAGINACADASTRO);
-		andView.addObject("pessoaobj", new Pessoa());
-		return andView;
+		return listaPessoas();
 	}
 
 	@PostMapping(value = "**/salvarpessoa")
@@ -34,12 +33,12 @@ public class PessoaController {
 
 		pessoaRepository.save(pessoa);
 		
-		return listapessoas();
+		return listaPessoas();
 
 	}
 
 	@GetMapping(value = "**/listapessoas")
-	public ModelAndView listapessoas() {
+	public ModelAndView listaPessoas() {
 		
 		ModelAndView andView = new ModelAndView(PAGINACADASTRO);
 		Iterable<Pessoa> pessoasIt = pessoaRepository.findAll();
@@ -50,7 +49,7 @@ public class PessoaController {
 	}
 	
 	@GetMapping(value = "/editarpessoa/{idpessoa}")
-	public ModelAndView editarpessoa(@PathVariable("idpessoa") Long idpessoa) {
+	public ModelAndView editarPessoa(@PathVariable("idpessoa") Long idpessoa) {
 		
 		ModelAndView andView = new ModelAndView(PAGINACADASTRO);
 		
@@ -61,11 +60,22 @@ public class PessoaController {
 	}
 	
 	@GetMapping(value = "/excluirpessoa/{idpessoa}")
-	public ModelAndView excluirpessoa(@PathVariable("idpessoa") Long idpessoa) {
+	public ModelAndView excluirPessoa(@PathVariable("idpessoa") Long idpessoa) {
 		
 		pessoaRepository.deleteById(idpessoa);
 		
-		return listapessoas();
+		return listaPessoas();
+		
+	}
+	
+	@PostMapping(value = "**/pesquisarpessoa")
+	public ModelAndView pesquisarNome(@RequestParam("nomepesquisa") String nomepesquisa) {
+		
+		ModelAndView andView = new ModelAndView(PAGINACADASTRO);
+		andView.addObject("pessoas", pessoaRepository.findByName(nomepesquisa));
+		andView.addObject("pessoaobj", new Pessoa());
+		
+		return andView;
 		
 	}
 		
