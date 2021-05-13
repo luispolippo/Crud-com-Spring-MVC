@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link type="text/css" rel="stylesheet"
-	href="materialize/css/materialize.css" media="screen,projection" />
+	href="/materialize/css/materialize.css" media="screen,projection" />
 <title>Cadastro</title>
 </head>
 <body style="margin-bottom: 50px">
@@ -21,23 +21,28 @@
 		</div>
 
 
-		<form action="salvarpessoa" method="post" class="col s12">
+		<form action="salvarpessoa" method="post" class="col s12" th:object="${pessoaobj}">
 
 			<div class="row">
 
 				<div class="input-field col s6">
+					<label for="id">Id</label>
+					<input readonly="readonly" name="id" id="id" type="text" th:field="*{id}">
+				</div>
+
+				<div class="input-field col s6">
 					<label for="nome">Nome</label> <input name="nome" id="nome"
-						type="text">
+						type="text" th:field="*{nome}">
 				</div>
 
 				<div class="input-field col s6">
 					<label for="sobrenome">Sobrenome</label> <input name="sobrenome"
-						id="sobrenome" type="text">
+						id="sobrenome" type="text" th:field="*{sobrenome}">
 				</div>
 
 				<div class="input-field col s6">
 					<label for="idade">Idade</label> <input name="idade" id="idade"
-						type="number">
+						type="number" th:field="*{idade}">
 				</div>
 
 			</div>
@@ -63,6 +68,8 @@
 					<th>NOME</th>
 					<th>SOBRENOME</th>
 					<th>IDADE</th>
+					<th>EDITAR</th>
+					<th>EXCLUIR</th>
 				</tr>
 			</thead>
 
@@ -72,6 +79,12 @@
 					<td th:text="${pessoa.nome}"></td>
 					<td th:text="${pessoa.sobrenome}"></td>
 					<td th:text="${pessoa.idade}"></td>
+					<td><a th:href="@{/editarpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
+						<i class="material-icons">edit</i>
+					</a></td>
+					<td><a th:href="@{/excluirpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
+						<i class="material-icons">delete_forever</i>
+					</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -79,6 +92,6 @@
 
 	</div>
 
-	<script type="text/javascript" src="materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.js"></script>
 </body>
 </html>
