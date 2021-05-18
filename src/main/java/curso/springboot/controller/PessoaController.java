@@ -78,5 +78,16 @@ public class PessoaController {
 		return andView;
 		
 	}
+	
+	@GetMapping(value = "/telefones/{idpessoa}")
+	public ModelAndView telefones(@PathVariable("idpessoa") Long idpessoa) {
+		
+		Optional<Pessoa> pessoa = pessoaRepository.findById(idpessoa);
+		
+		ModelAndView andView = new ModelAndView("cadastro/telefones");
+		andView.addObject("pessoaobj", pessoa.get());
+		return andView;
+		
+	}
 		
 }
