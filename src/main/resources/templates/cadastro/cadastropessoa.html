@@ -9,117 +9,152 @@
 	rel="stylesheet"
 	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">	
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <title>Cadastro</title>
 </head>
+
+<header>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand ms-3" href="/"> 
+				<i class="bi bi-house-door-fill"></i>
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Cadastro</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+</header>
+
 <body>
 	<div class="container">
-	
-	<div class="ms-5 me-5 mt-3 mb-3">
-	<div class="border border-2 rounded-3 border-dark">
-	<div class="text-center mt-5 mb-5">
-	<h1>Cadastro Pessoa</h1>
-	</div>
 
-	<div class="row">
-	<form action="salvarpessoa" id="formpessoa" method="post" th:object="${pessoaobj}">
-	
-	<div class="col-4 offset-4">
-	<div class="form-floating mb-3">
-		<input class="form-control" readonly="readonly" name="id"
-			id="id" type="text" placeholder="N° ID" th:field="*{id}">
-		<label for="id" class="form-label">ID</label> 
-	</div>
-	</div>
-	
-	<div class="col-4 offset-4">
-	<div class="form-floating mb-3">		
-		<input class="form-control" name="nome" id="nome" type="text" placeholder="Primeiro Nome" th:field="*{nome}">
-		<label for="nome" class="form-label">Nome</label> 
-	</div>
-	</div>
-	
-	<div class="col-4 offset-4">
-	<div class="form-floating mb-3">
-		<input class="form-control" name="sobrenome" id="sobrenome" type="text" placeholder="Último Nome" th:field="*{sobrenome}">	
-		<label for="sobrenome" class="form-label">Sobrenome</label> 
-	</div>
-	</div>
-	
-	<div class="col-4 offset-4">
-	<div class="form-floating mb-3">		
-		<input class="form-control" name="idade" id="idade" type="number" placeholder="Idade" th:field="*{idade}">
-		<label for="idade" class="form-label">Idade</label> 
-	</div>
-	</div>
+		<div class="ms-5 me-5 mt-3 mb-3">
+			<div class="border border-2 rounded-3 border-dark">
+				<div class="text-center mt-5 mb-5">
+					<h1>Cadastro Pessoa</h1>
+				</div>
 
-	<div class="col-4 offset-4 mb-5">
-		<input type="submit" class="btn btn-primary" value="Salvar">
-		<button type="reset" class="btn btn-primary">Limpar</button>
-	</div> 
-	
-	</form>
-	</div>
-	</div>
-	</div>
-	
-	
-	<div class="ms-5 me-5 mb-3">
-	<div class="border border-2 rounded-3 border-dark table-responsive">
-	<div class="m-3">
-	
-	<div class="row">
-	<div class="col">	
-	<a class="btn btn-primary" role="button" href="listapessoas">Listar Cadastro</a>
-	</div>
-	
-	<div class="col">
-	<form action="pesquisarpessoa" method="post">
-		
-		<div class="input-group">
-		<input class="form-control" placeholder="Pesquisar por Nome" name="nomepesquisa" id="pesquisar" type="text"> 
-		<button class="btn btn-outline-primary" type="submit">Buscar</button>
+				<div class="row">
+					<form action="salvarpessoa" id="formpessoa" method="post"
+						th:object="${pessoaobj}">
+
+						<div class="col-4 offset-4">
+							<div class="form-floating mb-3">
+								<input class="form-control" readonly="readonly" name="id"
+									id="id" type="text" placeholder="N° ID" th:field="*{id}">
+								<label for="id" class="form-label">ID</label>
+							</div>
+						</div>
+
+						<div class="col-4 offset-4">
+							<div class="form-floating mb-3">
+								<input class="form-control" name="nome" id="nome" type="text"
+									placeholder="Primeiro Nome" th:field="*{nome}"> <label
+									for="nome" class="form-label">Nome</label>
+							</div>
+						</div>
+
+						<div class="col-4 offset-4">
+							<div class="form-floating mb-3">
+								<input class="form-control" name="sobrenome" id="sobrenome"
+									type="text" placeholder="Último Nome" th:field="*{sobrenome}">
+								<label for="sobrenome" class="form-label">Sobrenome</label>
+							</div>
+						</div>
+
+						<div class="col-4 offset-4">
+							<div class="form-floating mb-3">
+								<input class="form-control" name="idade" id="idade"
+									type="number" placeholder="Idade" th:field="*{idade}">
+								<label for="idade" class="form-label">Idade</label>
+							</div>
+						</div>
+
+						<div class="col-4 offset-4 mb-5">
+							<input type="submit" class="btn btn-primary" value="Salvar">
+							<button type="reset" class="btn btn-primary">Limpar</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
 		</div>
-		
-	</form>
-	
-	</div>
-	</div>
-	
-	<table class="table table-bordered table-hover text-center mt-3">
-		<thead class="table-primary">
-			<tr>
-				<th>#</th>
-				<th>NOME</th>
-				<th>SOBRENOME</th>
-				<th>IDADE</th>
-				<th>EDITAR</th>
-				<th>EXCLUIR</th>
-			</tr>
-		</thead>
 
-		<tbody>
-			<tr th:each="pessoa:${pessoas}">
-				<td th:text="${pessoa.id}"></td>
-				<td><a th:href="@{/telefones/{idpessoa}(idpessoa=${pessoa.id})}"><span th:text="${pessoa.nome}"></span></a></td>
-				<td th:text="${pessoa.sobrenome}"></td>
-				<td th:text="${pessoa.idade}"></td>
-				<td><a
-					th:href="@{/editarpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
-					<i class="bi bi-pencil-fill"></i>	 
-				 </a></td>
-				<td><a
-					th:href="@{/excluirpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
-					<i class="bi bi-trash-fill"></i>
-				</a></td>
-			</tr>
-		</tbody>
-	</table>
+
+		<div class="ms-5 me-5 mb-3">
+			<div class="border border-2 rounded-3 border-dark table-responsive">
+				<div class="m-3">
+
+					<div class="row">
+						<div class="col">
+							<a class="btn btn-primary" role="button" href="listapessoas">Listar
+								Cadastro</a>
+						</div>
+
+						<div class="col">
+							<form action="pesquisarpessoa" method="post">
+
+								<div class="input-group">
+									<input class="form-control" placeholder="Pesquisar por Nome"
+										name="nomepesquisa" id="pesquisar" type="text">
+									<button class="btn btn-outline-primary" type="submit">Buscar</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+
+					<table class="table table-bordered table-hover text-center mt-3">
+						<thead class="table-primary">
+							<tr>
+								<th>#</th>
+								<th>NOME</th>
+								<th>SOBRENOME</th>
+								<th>IDADE</th>
+								<th>EDITAR</th>
+								<th>EXCLUIR</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="pessoa:${pessoas}">
+								<td th:text="${pessoa.id}"></td>
+								<td><a
+									th:href="@{/telefones/{idpessoa}(idpessoa=${pessoa.id})}"><span
+										th:text="${pessoa.nome}"></span></a></td>
+								<td th:text="${pessoa.sobrenome}"></td>
+								<td th:text="${pessoa.idade}"></td>
+								<td><a
+									th:href="@{/editarpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
+										<i class="bi bi-pencil-fill"></i>
+								</a></td>
+								<td><a
+									th:href="@{/excluirpessoa/{idpessoa}(idpessoa=${pessoa.id})}">
+										<i class="bi bi-trash-fill"></i>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
-	</div>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
