@@ -83,7 +83,9 @@
 					<h5>Cadastrar Telefones</h5>
 				</div>
 
-				<form th:action="@{/addFonePessoa/{pessoaid}(pessoaid=${pessoaobj.id})}" method="post">
+				<form
+					th:action="@{/addFonePessoa/{pessoaid}(pessoaid=${pessoaobj.id})}"
+					method="post">
 
 					<div class="row">
 
@@ -112,6 +114,35 @@
 
 			</div>
 		</div>
+
+		<div class="ms-5 me-5 mb-3">
+			<div class="border border-2 rounded-3 border-dark table-responsive">
+				<div class="m-3">
+					
+					<table class="table table-bordered table-hover text-center mt-3">
+					<thead class="table-primary">
+						<tr>
+							<th>Número</th>
+							<th>Tipo</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="fone : ${telefones}">
+							<td th:text="${fone.numero}"></td>
+							<td th:text="${fone.tipo}"></td>
+							<td><a href="#"><i class="bi bi-trash-fill"></i></a></td>
+						</tr>
+					</tbody>	
+						
+					</table>
+					
+				</div>
+			</div>
+		</div>
+
+
 	</div>
 
 
@@ -121,3 +152,5 @@
 		crossorigin="anonymous"></script>
 </body>
 </html>
+
+
